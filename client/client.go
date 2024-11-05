@@ -267,13 +267,11 @@ func (c *Client) Transfer(src account.Account, dest address.Address, amount uint
 		return tron.Transaction{}, err
 	}
 
-	//if err := c.BroadcastTransaction(&tx); err != nil {
-	//	return "", err
-	//}
+	if err := c.BroadcastTransaction(&tx); err != nil {
+		return tron.Transaction{}, err
+	}
 
-	//return c.await(tx.Id)
 	return tx, nil
-
 }
 
 // TransferAsset trc10
